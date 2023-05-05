@@ -34,6 +34,12 @@ Route::get('hotel/{id}', function($id){
 //->where('id', '[0-9]+')
 ->name('hotel.show');
 
+Route::get('reserve/{id}', function($id){
+    return view('hotel.reservation', [
+        'reserve' => $id
+    ]);
+})->name('hotel.reservation');
+
 Route::get('/', function () {
     return view('home');
 })->name('home');
