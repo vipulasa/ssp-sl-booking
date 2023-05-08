@@ -47,8 +47,22 @@
                             <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
                         </div>
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">About</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum
+                                deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
+                                qui
+                                ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident.
+                                Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-900">Location</dt>
                             <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Backend Developer
+                            </dd>
+                        </div>
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">Check-in \ Check-out</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                2:00 PM - 12:00 PM
                             </dd>
                         </div>
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -57,14 +71,7 @@
                                 margotfoster@example.com
                             </dd>
                         </div>
-                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-900">About</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum
-                                deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
-                                qui
-                                ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident.
-                                Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
-                        </div>
+
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-900">Price Per Room</dt>
                             <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
