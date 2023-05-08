@@ -116,6 +116,30 @@
                             </x-slot>
 
                             <x-slot name="content">
+
+                                 <!-- Administration -->
+                                 <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Administration') }}
+                                </div>
+
+                                <x-dropdown-link href="{{ route('admin.hotel.index') }}">
+                                    {{ __('Hotels') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link href="{{ route('admin.category.index') }}">
+                                    {{ __('Categories') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link href="{{ route('admin.reservation.index') }}">
+                                    {{ __('Reservations') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link href="{{ route('admin.user.index') }}">
+                                    {{ __('Users') }}
+                                </x-dropdown-link>
+
+                                <div class="border-t border-gray-200"></div>
+
                                 <!-- Account Management -->
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     {{ __('Manage Account') }}
