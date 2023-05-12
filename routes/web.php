@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HotelController as HotelController;
+use App\Http\Controllers\Admin\HotelController as AdminHotelController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,45 +23,41 @@ Route::middleware([
     'verified',
     'role:admin'
 ])
-->prefix('admin')
-->group(function () {
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
 
-    Route::get('/hotels', function () {
-        return view('admin.hotel.index');
-    })->name('admin.hotel.index');
+        Route::resource('/hotels', AdminHotelController::class);
 
-    Route::get('/categories', function () {
-        return view('admin.category.index');
-    })->name('admin.category.index');
+        Route::get('/categories', function () {
+            return view('admin.category.index');
+        })->name('category.index');
 
-    Route::get('/reservations', function () {
-        return view('admin.reservation.index');
-    })->name('admin.reservation.index');
+        Route::get('/reservations', function () {
+            return view('admin.reservation.index');
+        })->name('reservation.index');
 
-    Route::get('/users', function () {
-        return view('admin.users.index');
-    })->name('admin.user.index');
+        Route::get('/users', function () {
+            return view('admin.users.index');
+        })->name('user.index');
+    });
 
-});
-
-Route::get('hotel/{id}', function($id){
+Route::get('hotel/{id}', function ($id) {
     return view('hotel.show', [
         'hotel' => $id
     ]);
 })
-//->where('id', '[0-9]+')
-->name('hotel.show');
+    //->where('id', '[0-9]+')
+    ->name('hotel.show');
 
-Route::get('reserve/{id}', function($id){
+Route::get('reserve/{id}', function ($id) {
     return view('hotel.reservation', [
         'reserve' => $id
     ]);
 })->name('hotel.reservation');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', HomeController::class)->name('home');

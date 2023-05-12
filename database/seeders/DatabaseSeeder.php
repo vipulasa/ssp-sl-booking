@@ -25,5 +25,10 @@ class DatabaseSeeder extends Seeder
             'password' => \Illuminate\Support\Facades\Hash::make('password'),
             'role' => \App\Enums\UserRole::Admin->value,
         ]);
+
+        $this->call([
+            CategorySeeder::class,
+            HotelSeeder::class,
+        ]);
     }
 }

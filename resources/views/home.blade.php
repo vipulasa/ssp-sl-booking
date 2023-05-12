@@ -8,25 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="container mx-auto">
-
                 <div class="grid grid-cols-4 gap-4">
-
-                    @livewire('hotel-card', [
-                        'hotel' => [],
-                    ])
-
-                    @livewire('hotel-card', [
-                        'hotel' => [],
-                    ])
-
-                    @livewire('hotel-card', [
-                        'hotel' => [],
-                    ])
-
-                    @livewire('hotel-card', [
-                        'hotel' => [],
-                    ])
-
+                    @foreach ($hotels as $hotel)
+                        @livewire('hotel-card', [
+                            'hotel' => $hotel,
+                        ])
+                    @endforeach
                 </div>
             </div>
         </div>
