@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hotel;
 
 class HotelController extends Controller
 {
@@ -11,10 +12,12 @@ class HotelController extends Controller
         return view('hotel.index');
     }
 
-    public function show($id)
+    public function show(Hotel $hotel)
     {
+        debug($hotel);
+
         return view('hotel.show', [
-            'hotel' => $id
+            'hotel' => $hotel
         ]);
     }
 

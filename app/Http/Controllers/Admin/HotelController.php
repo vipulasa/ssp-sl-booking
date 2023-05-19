@@ -31,4 +31,11 @@ class HotelController extends Controller
             'hotel' => $hotel
         ]);
     }
+
+    public function destroy(Hotel $hotel)
+    {
+        $hotel->delete();
+
+        return redirect()->route('admin.hotels.index');
+    }
 }

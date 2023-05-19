@@ -31,7 +31,9 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
 
-        Route::resource('/hotels', AdminHotelController::class);
+        Route::resource('/hotels', AdminHotelController::class)->only([
+            'index', 'create', 'edit', 'destroy'
+        ]);
 
         Route::get('/categories', function () {
             return view('admin.category.index');
@@ -46,18 +48,13 @@ Route::middleware([
         })->name('user.index');
     });
 
-Route::get('hotel/{id}', function ($id) {
-    return view('hotel.show', [
-        'hotel' => $id
-    ]);
-})
-    //->where('id', '[0-9]+')
+Route::get('hotels', [HotelController::class, 'index'])
+    ->name('hotel.index');
+
+Route::get('hotel/{hotel}', [HotelController::class, 'show'])
     ->name('hotel.show');
 
-Route::get('reserve/{id}', function ($id) {
-    return view('hotel.reservation', [
-        'reserve' => $id
-    ]);
-})->name('hotel.reservation');
+Route::get('reserve/{hotel}', [HotelController::class, 'reservation'])
+    ->name('hotel.reservation');
 
 Route::get('/', HomeController::class)->name('home');

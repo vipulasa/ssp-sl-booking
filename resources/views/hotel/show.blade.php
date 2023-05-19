@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cinnamon Grand Colombo') }}
+            {{ $hotel->name }}
         </h2>
     </x-slot>
 
@@ -17,19 +17,16 @@
                         <div class="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
                             <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
                                 <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                                    <span class="block xl:inline">Cinnamon Grand Colombo</span>
+                                    <span class="block xl:inline">{{ $hotel->name }}</span>
                                 </h1>
-                                <p class="mt-6 text-lg leading-8 text-gray-600">Anim aute id magna aliqua ad ad non
-                                    deserunt
-                                    sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                                    fugiat aliqua.</p>
+                                <p class="mt-6 text-lg leading-8 text-gray-600">{{ $hotel->description }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bg-gray-50 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                     <img class="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
-                        src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80"
+                        src="{{ $hotel->getFirstMediaUrl('image') }}"
                         alt="">
                 </div>
             </div>
@@ -44,42 +41,55 @@
                     <dl class="divide-y divide-gray-100">
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-900">Name</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $hotel->name }}</dd>
                         </div>
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-900">About</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum
-                                deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
-                                qui
-                                ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident.
-                                Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                            <dt class="text-sm font-medium text-gray-900">Description</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {{ $hotel->description }}
+                            </dd>
                         </div>
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-900">Location</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Backend Developer
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {{ $hotel->address }}, {{ $hotel->city }}, {{ $hotel->zip_code }}, {{ $hotel->country }}
                             </dd>
                         </div>
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-900">Check-in \ Check-out</dt>
                             <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                2:00 PM - 12:00 PM
-                            </dd>
-                        </div>
-                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-900">Category</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                margotfoster@example.com
+                                {{ $hotel->check_in }} - {{ $hotel->check_out }}
                             </dd>
                         </div>
 
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-900">Price Per Room</dt>
-                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
+                            <dt class="text-sm font-medium text-gray-900">Category</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {{ $hotel->category->name }}
+                            </dd>
+                        </div>
+
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">Tags</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                @foreach ($hotel->categories as $category)
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        {{ $category->name }}
+                                    </span>
+                                @endforeach
+                            </dd>
+                        </div>
+
+                        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-900">Price</dt>
+                            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {{ $hotel->price }} €
+                            </dd>
                         </div>
                         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-900">Reserve</dt>
                             <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                <a href="{{ route('hotel.reservation', 1) }}" class="text-indigo-600 hover:text-indigo-900">
+                                <a href="{{ route('hotel.reservation', $hotel->id) }}" class="text-indigo-600 hover:text-indigo-900">
                                     Click here to reserve
                                 </a>
                             </dd>

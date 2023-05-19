@@ -55,7 +55,10 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                            onclick="return confirm('Are you sure you want to delete this hotel?')"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                            Delete
+                                        </button>
                                     </form>
                                 </x-td>
                             </x-tr>

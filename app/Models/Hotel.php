@@ -44,6 +44,12 @@ class Hotel extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('image')
+            ->singleFile();
+    }
+
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')
