@@ -34,7 +34,8 @@ class HotelReservationForm extends Component
         $this->reservation = new Reservation();
     }
 
-    public function createReservation(){
+    public function createReservation()
+    {
 
         $this->validate();
 
@@ -48,6 +49,12 @@ class HotelReservationForm extends Component
 
         // show a success message
         session()->flash('message', 'Reservation created successfully!');
+
+        // get the current active user
+        $user = auth()->user();
+
+        // notify the user
+        $user->notify((new \App\Notifications\ReservationComplete($this->reservation)));
 
         // redirect the user to the hotel page
         return redirect()->route('hotel.show', $this->hotel->id);

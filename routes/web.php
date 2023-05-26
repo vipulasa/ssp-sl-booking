@@ -18,6 +18,11 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+Route::get('/dev', function(){
+
+    return true;
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
