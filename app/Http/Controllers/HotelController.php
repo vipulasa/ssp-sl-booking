@@ -14,17 +14,15 @@ class HotelController extends Controller
 
     public function show(Hotel $hotel)
     {
-        debug($hotel);
-
         return view('hotel.show', [
             'hotel' => $hotel
         ]);
     }
 
-    public function reservation($id)
+    public function reservation(Hotel $hotel)
     {
         return view('hotel.reservation', [
-            'reserve' => $id
+            'hotel' => $hotel
         ]);
     }
 }

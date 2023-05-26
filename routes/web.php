@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminReservationController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HotelController as HotelController;
@@ -39,9 +40,7 @@ Route::middleware([
             return view('admin.category.index');
         })->name('category.index');
 
-        Route::get('/reservations', function () {
-            return view('admin.reservation.index');
-        })->name('reservation.index');
+        Route::get('/reservations', [AdminReservationController::class, 'index'])->name('reservation.index');
 
         Route::get('/users', function () {
             return view('admin.users.index');
@@ -55,6 +54,7 @@ Route::get('hotel/{hotel}', [HotelController::class, 'show'])
     ->name('hotel.show');
 
 Route::get('reserve/{hotel}', [HotelController::class, 'reservation'])
+    ->middleware(['auth:sanctum', config('jetstream.auth_session')])
     ->name('hotel.reservation');
 
 Route::get('/', HomeController::class)->name('home');
